@@ -36,8 +36,7 @@ def interface():
         else: # extraire le texte via un input
 
             print("|       entrer le texte ci-dessous      |")
-            entree_texte = input("-->")
-            texte = lecture(ecriture(entree_texte))
+            texte = input("-->")
 
         print("|   Souhaitez vous encoder ou decoder   |")
         print("|                                       |")
@@ -45,8 +44,10 @@ def interface():
         choix = input("-->")
 
         if choix == "encry":
+            ecriture(crypter(texte,clef))
             return crypter(texte, clef)
         else:
+            ecriture(crypter(texte, clef))
             return decrypter(texte, clef)
 
 

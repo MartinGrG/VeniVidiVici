@@ -1,3 +1,3 @@
 from Interface import *
 
-interface()
+print(interface())
