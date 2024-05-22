@@ -14,6 +14,7 @@ def interface():
     print("|                sur vous ?             |")
     print("|   oui(entrer la)   non(laisser vide)  |")
     clef = input("-->")
+    clef = int(clef)
 
     if clef !=" ": #pas vide: clef : mode normal, on a la clef de cryptage
         print("|    Vous avez une clef d'encryptage    |")
