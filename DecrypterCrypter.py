@@ -24,8 +24,3 @@ def crypter(texte, clef):
 
 def decrypter(texte, clef):
     return crypter(texte, -clef)[0], -crypter(texte, -clef)[1]
-
-
-phrase = 'a et z'
-print(crypter(phrase, -3))
-print(decrypter(crypter(phrase, -3)[0], -3))
