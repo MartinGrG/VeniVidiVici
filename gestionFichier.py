@@ -1,6 +1,7 @@
 """Création des fonctions de lecture et écriture des fichiers textes """
 
 import os
+import unicodedata
 
 def lecture(nom_fichier):
     #Entrée: nom du fichier à lire
@@ -10,6 +11,8 @@ def lecture(nom_fichier):
     with open(nom_fichier, 'r', encoding='utf8') as fio:
         #Lire le contenu du fichier
         contenu = fio.read()
+        contenu = unicodedata.normalize('NFD', contenu).encode(encoding='ASCII', errors='ignore').decode('utf8')
+
     return contenu
 
 
@@ -21,6 +24,7 @@ def ecriture(contenu):
     #On crée un fichier texte et on écrit dedans
     with open("message.txt", "w", encoding='utf8') as fio:
         fio.write(contenu)
+        return("message.txt")
 
 def modifier(nom_fichier, contenu):
     #Entrées: -nom du fichier à modifier
