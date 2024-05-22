@@ -1,4 +1,6 @@
 # Ce code met en place l'interface utilisateur
+from DecrypterCrypter import *
+from gestionFichier import *
 
 def interface():
     print("┌---------------------------------------┐")
@@ -48,3 +50,4 @@ def interface():
 
 
     else: #vide : pas de clef : mode brut-force
+        print("pas traité")
