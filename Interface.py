@@ -1,4 +1,4 @@
-# Ce code met en place l'interface utilisateur
+""" Ce code met en place l'interface utilisateur"""
 from DecrypterCrypter import *
 from gestionFichier import *
 
@@ -44,7 +44,7 @@ def interface():
         choix = input("-->")
 
         if choix == "encry":
-            ecriture(crypter(texte,clef))
+            ecriture(crypter(texte, clef)[0])
             return crypter(texte, clef)
         else:
             ecriture(crypter(texte, clef))
