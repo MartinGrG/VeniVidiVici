@@ -9,7 +9,7 @@ def brute_force(text):
     compteur = 0
 
     while resultat < 0.15 and compteur < 26:
-        compteur += 1  # compte le nombre de tour de boucle
+        compteur += 1  # compte le nombre de tours de boucle
         clef_supposee = -clef_supposee
 
         message = decrypter(text, clef_supposee)
