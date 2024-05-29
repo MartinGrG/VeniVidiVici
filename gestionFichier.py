@@ -7,14 +7,16 @@ def lecture(nom_fichier):
     #Entrée: nom du fichier à lire
     #Sortie: le contenu du texte
 
-    #Ouvrir le fichier en mode lecture
-    with open(nom_fichier, 'r', encoding='utf8') as fio:
-        #Lire le contenu du fichier
-        contenu = fio.read()
-        contenu = unicodedata.normalize('NFD', contenu).encode(encoding='ASCII', errors='ignore').decode('utf8')
+    if os.path.exists(nom_fichier):
+        #Ouvrir le fichier en mode lecture
+        with open(nom_fichier, 'r', encoding='utf8') as fio:
+            #Lire le contenu du fichier
+            contenu = fio.read()
+            contenu = unicodedata.normalize('NFD', contenu).encode(encoding='ASCII', errors='ignore').decode('utf8')
 
-    return contenu
-
+        return contenu
+    else:
+        print("Le fichier indiqué n'existe pas")
 
 
 def ecriture(contenu):
