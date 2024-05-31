@@ -18,4 +18,4 @@ Le projet est composé de 4 fichiers:
 - GestionFichier.py : programme gérant l'ouverture, la lecture  et l'écriture de fichier textes
 - DecrypterCrypter.py : algorithmes de cryptage et décryptage
 
-![Architecture code](architecture_code.png)
+![Architecture code](architecture_code.png) 
