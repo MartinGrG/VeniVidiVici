@@ -12,8 +12,9 @@ Dans le cas où l'utilisateur ne connait pas la clef de cryptage, il est possibl
 
 
 ## Composition
-Le projet est composé de 4 fichiers:
-- main.py : fichier à "run" pour lancer le projet
-- Interface.py : programme mettant en place l'interface utilisateur 
-- GestionFichier.py : programme gérant l'ouverture, la lecture  et l'écriture de fichier textes
-- DecrypterCrypter.py : algorithmes de cryptage et décryptage
+Le projet est composé de 5 fichiers:
+- main.py : fichier à "run" pour lancer le projet.
+- Interface.py : programme mettant en place l'interface utilisateur.
+- GestionFichier.py : programme gérant l'ouverture, la lecture  et l'écriture de fichier textes.
+- DecrypterCrypter.py : algorithmes de cryptage et décryptage.
+- verifications.py : algorithmes de vérifications des réponses que l'utilisateur entre.
