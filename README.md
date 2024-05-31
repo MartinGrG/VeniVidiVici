@@ -17,3 +17,5 @@ Le projet est composé de 4 fichiers:
 - Interface.py : programme mettant en place l'interface utilisateur 
 - GestionFichier.py : programme gérant l'ouverture, la lecture  et l'écriture de fichier textes
 - DecrypterCrypter.py : algorithmes de cryptage et décryptage
+
+![Architecture code](architecture_code.png)
