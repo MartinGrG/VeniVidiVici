@@ -1,6 +1,7 @@
 """ Ce code met en place l'interface utilisateur"""
 from DecrypterCrypter import *
 from gestionFichier import *
+from bruteForce import brute_force
 
 
 def verifier_int(chaine):
@@ -40,21 +41,18 @@ def verifier_binaire(choix1, choix2):
 
 def verifier_clef():
     """Cette fonction sert à vérifier que l'utilisateur entre une clef valide s'il en a une"""
-    # Sortie : un entier ou une chaîne de caractère 'non' si l'utilisateur n'a pas de clé
-    clef = verifier_binaire('oui', 'non')
-    if clef == 'oui':
+    # Sortie : un entier : la valeur de la clef
+    
+    print("|                                       |")
+    print("|        Quelle est votre clef ?        |")
+    valeur_clef = input("--> ")
+    print("")
+    while not verifier_int(valeur_clef):
         print("|                                       |")
+        print("|   La clef entrée n'est pas correcte   |")
         print("|        Quelle est votre clef ?        |")
         valeur_clef = input("--> ")
-        print("")
-        while not verifier_int(valeur_clef):
-            print("|                                       |")
-            print("|   La clef entrée n'est pas correcte   |")
-            print("|        Quelle est votre clef ?        |")
-            valeur_clef = input("--> ")
-        return int(valeur_clef)
-    else:
-        return 'non'
+    return int(valeur_clef)
 
 
 def interface():
@@ -67,19 +65,21 @@ def interface():
 
     print("|    Avez vous une clef de cryptage     |")
     print("|                sur vous ?             |")
-    print("|    oui(entrer oui)   non(entrer non)  |")
-    clef = verifier_clef()
 
-    if clef == 'non':  # non : pas de clef : mode brut-force
-        print("pas traité")
+    print("|    oui(entrer oui)   non(entrer non)  |")
+    dispo_clef = verifier_binaire('oui','non')
 
     # On vérifie d'abord 'non' parce que clef is int ne fonctionne
     # pas donc impossible de verifier si on a un entier ou pas
-    else:  # On a la clef de cryptage : mode normal
+    if dispo_clef == 'oui':  # On a la clef de cryptage : mode normal
+      
         print("|    Vous avez une clef d'encryptage    |")
         print("|      vous entrez en mode normal       |")
-
-        print("|    sous quel forme souhaitez vous     |")
+        print("|                                       |")
+        
+        clef = verifier_clef()
+        
+        print("|   sous quelle forme souhaitez vous    |")
         print("|          entrer votre texte           |")
         print("|    fichier(fichier)   input(input)    |")
         forme = verifier_binaire('fichier', 'input')
@@ -108,3 +108,36 @@ def interface():
         else:
             ecriture(crypter(texte, clef))
             return decrypter(texte, clef)
+
+    else:  # 'non' : pas de clef : mode brut-force
+        print("|  Vous n'avez pas de clef d'encryptage |")
+        print("|    vous entrez en mode force brute    |")
+
+        print("|   sous quelle forme souhaitez vous    |")
+        print("|          entrer votre texte           |")
+        print("|    fichier(fichier)   input(input)    |")
+        forme = input("-->")
+
+        if forme == "fichier":  # extraire le texte via un fichier
+
+            print("|        entrer le nom du fichier       |")
+            print("|              sous la forme            |")
+            print("|            [mon_fichier.txt]          |")
+            fichier_nom = input("-->")
+            texte = lecture(fichier_nom)
+
+        else:  # extraire le texte via un input
+
+            print("|       entrer le texte ci-dessous      |")
+            texte = input("-->")
+
+        print("|Démarrage du décryptage par force brute|")
+        print("|                                       |")
+        resultat = brute_force(texte)
+
+        print(f"|       entrer le texte ci-dessous      |")
+        print(f"|       pour la clef : {resultat[1]}     |")
+        print(f"|la méthode par force brute a décrypté |")
+        print(f"| le message résultant est le suivant :|")
+        print(resultat[0])
+
