@@ -17,6 +17,13 @@ def verifier_int(chaine):
     return True
 
 
+def afficher(phrase):
+    taille_fenetre = 39
+    espace_gauche = (taille_fenetre - len(phrase)) // 2
+    espace_droite = taille_fenetre - len(phrase) - espace_gauche
+    print(f"|{espace_gauche * ' '}{phrase}{espace_droite* ' '}|")
+
+
 def verifier_binaire(choix1, choix2):
     """Cette fonction sert à s'assurer que l'utilisateur a entré une réponse parmi 2 choix"""
     # Entrée : des chaînes de caractères
@@ -29,12 +36,13 @@ def verifier_binaire(choix1, choix2):
     espace_droite2 = taille_fenetre - len(choix2) - espace_gauche2
     liste_choix = [choix1, choix2]
     while choix not in liste_choix:
-        print("| La réponse entrée n'est pas correcte. |")
-        print("|                                       |")
-        print("|       Veuillez choisir entre :        |")
-        print(f"|{espace_gauche1 * ' '}{choix1}{espace_droite1 * ' '}|")
-        print(f"|{espace_gauche2 * ' '}{choix2}{espace_droite2 * ' '}|")
-        print("|                                       |")
+        afficher("La réponse entrée n'est pas correcte.")
+        afficher("")
+        afficher("Veuillez choisir entre :")
+        afficher(choix1)
+        afficher(choix2)
+        afficher('')
+
         choix = input("--> ")
     return choix
 
@@ -43,63 +51,63 @@ def verifier_clef():
     """Cette fonction sert à vérifier que l'utilisateur entre une clef valide s'il en a une"""
     # Sortie : un entier : la valeur de la clef
     
-    print("|                                       |")
-    print("|        Quelle est votre clef ?        |")
+    afficher("")
+    afficher("Quelle est votre clef ?")
     valeur_clef = input("--> ")
-    print("")
+    afficher("")
     while not verifier_int(valeur_clef):
-        print("|                                       |")
-        print("|   La clef entrée n'est pas correcte   |")
-        print("|        Quelle est votre clef ?        |")
+        afficher("")
+        afficher("La clef entrée n'est pas correcte")
+        afficher("Quelle est votre clef ?")
         valeur_clef = input("--> ")
     return int(valeur_clef)
 
 
 def interface():
     print("┌---------------------------------------┐")
-    print("|               Bonjour                 |")
-    print("| Bienvenue sur l'encrypteur/décrypteur |")
-    print("|                                       |")
-    print("|     Faites vite, le temps presse      |")
+    afficher("Bonjour")
+    afficher("Bienvenue sur l'encrypteur/décrypteur")
+    afficher("")
+    afficher("Faites vite, le temps presse")
     print("└---------------------------------------┘")
 
-    print("|    Avez vous une clef de cryptage     |")
-    print("|                sur vous ?             |")
+    afficher("Avez vous une clef de cryptage")
+    afficher("sur vous ?")
 
-    print("|    oui(entrer oui)   non(entrer non)  |")
+    afficher("oui(entrer oui)   non(entrer non)")
     dispo_clef = verifier_binaire('oui','non')
 
     # On vérifie d'abord 'non' parce que clef is int ne fonctionne
     # pas donc impossible de verifier si on a un entier ou pas
     if dispo_clef == 'oui':  # On a la clef de cryptage : mode normal
       
-        print("|    Vous avez une clef d'encryptage    |")
-        print("|      vous entrez en mode normal       |")
-        print("|                                       |")
+        afficher("Vous avez une clef d'encryptage")
+        afficher("vous entrez en mode normal")
+        afficher("")
         
         clef = verifier_clef()
         
-        print("|   sous quelle forme souhaitez vous    |")
-        print("|          entrer votre texte           |")
-        print("|    fichier(fichier)   input(input)    |")
+        afficher("Sous quelle forme souhaitez vous")
+        afficher("entrer votre texte")
+        afficher("fichier(fichier)   input(input)")
         forme = verifier_binaire('fichier', 'input')
 
         if forme == "fichier":  # extraire le texte via un fichier
 
-            print("|        entrer le nom du fichier       |")
-            print("|              sous la forme            |")
-            print("|            [mon_fichier.txt]          |")
+            afficher("entrer le nom du fichier")
+            afficher("sous la forme")
+            afficher("[mon_fichier.txt]")
             fichier_nom = input("--> ")
             texte = lecture(fichier_nom)
 
         else:  # extraire le texte via un input
 
-            print("|       entrer le texte ci-dessous      |")
+            afficher("entrer le texte ci-dessous")
             texte = input("--> ")
 
-        print("|   Souhaitez vous encoder ou decoder   |")
-        print("|                                       |")
-        print("|  encrypter(encry)   decrypter(decry)  |")
+        afficher("Souhaitez vous encrypter ou décrypter")
+        afficher("")
+        afficher("encrypter(encry)   decrypter(decry)")
         choix = verifier_binaire('encry', 'decry')
 
         if choix == "encry":
@@ -110,34 +118,34 @@ def interface():
             return decrypter(texte, clef)
 
     else:  # 'non' : pas de clef : mode brut-force
-        print("|  Vous n'avez pas de clef d'encryptage |")
-        print("|    vous entrez en mode force brute    |")
+        afficher("Vous n'avez pas de clef d'encryptage")
+        afficher("vous entrez en mode force brute")
 
-        print("|   sous quelle forme souhaitez vous    |")
-        print("|          entrer votre texte           |")
-        print("|    fichier(fichier)   input(input)    |")
-        forme = input("-->")
+        afficher("Sous quelle forme souhaitez vous")
+        afficher("entrer votre texte")
+        afficher("fichier(fichier)   input(input)")
+        forme = verifier_binaire('fichier', 'input')
 
         if forme == "fichier":  # extraire le texte via un fichier
 
-            print("|        entrer le nom du fichier       |")
-            print("|              sous la forme            |")
-            print("|            [mon_fichier.txt]          |")
+            afficher("entrer le nom du fichier")
+            afficher("sous la forme")
+            afficher("[mon_fichier.txt]")
             fichier_nom = input("-->")
             texte = lecture(fichier_nom)
 
         else:  # extraire le texte via un input
 
-            print("|       entrer le texte ci-dessous      |")
+            afficher("entrer le texte ci-dessous")
             texte = input("-->")
 
-        print("|Démarrage du décryptage par force brute|")
-        print("|                                       |")
+        afficher("Démarrage du décryptage par force brute")
+        afficher("")
         resultat = brute_force(texte)
 
-        print(f"|       entrer le texte ci-dessous      |")
-        print(f"|       pour la clef : {resultat[1]}     |")
-        print(f"|la méthode par force brute a décrypté |")
-        print(f"| le message résultant est le suivant :|")
+        afficher(f"Pour la clef : {resultat[1]}")
+        afficher("La méthode par force brute a décrypté")
+        afficher(f"Le message résultant est le suivant :")
+        print('')
         print(resultat[0])
 
