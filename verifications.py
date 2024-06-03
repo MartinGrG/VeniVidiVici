@@ -49,6 +49,13 @@ def verifier_clef():
     afficher("Quelle est votre clef ?")
     valeur_clef = input("--> ")
     afficher("")
+
+    while valeur_clef == '':
+        afficher("")
+        afficher("La clef entrée n'est pas correcte")
+        afficher("Quelle est votre clef ?")
+        valeur_clef = input("--> ")
+
     while not verifier_int(valeur_clef):
         afficher("")
         afficher("La clef entrée n'est pas correcte")
