@@ -17,10 +17,8 @@ def interface():
     afficher("sur vous ?")
 
     afficher("oui(entrer oui)   non(entrer non)")
-    dispo_clef = verifier_binaire('oui','non')
+    dispo_clef = verifier_binaire('oui', 'non')
 
-    # On vérifie d'abord 'non' parce que clef is int ne fonctionne
-    # pas donc impossible de verifier si on a un entier ou pas
     if dispo_clef == 'oui':  # On a la clef de cryptage : mode normal
       
         afficher("Vous avez une clef d'encryptage")
@@ -45,6 +43,7 @@ def interface():
         else:  # extraire le texte via un input
 
             afficher("entrer le texte ci-dessous")
+            afficher("en une seule ligne")
             texte = input("--> ")
 
         afficher("Souhaitez vous encrypter ou décrypter")
@@ -91,3 +90,11 @@ def interface():
         print('')
         print(resultat[0])
 
+        afficher("Voulez-vous enregistrer la réponse")
+        afficher("sous la forme d'un fichier ?")
+        choix_enregistrer = verifier_binaire('oui', 'non')
+        if choix_enregistrer == 'oui':
+            ecriture(resultat[0])
+            afficher("Le résultat se trouve dans message.txt")
+        else:
+            afficher("À bientôt")

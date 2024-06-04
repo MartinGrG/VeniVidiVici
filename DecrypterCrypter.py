@@ -8,6 +8,7 @@ alphabet_maj = ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'V', 'W', 'X', 'Y', 'Z')
 chiffres = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
 
+
 def crypter(texte, clef):
     texte = unicodedata.normalize('NFD', texte).encode(encoding='ASCII', errors='ignore').decode('utf8')
     texte_crypte = ''

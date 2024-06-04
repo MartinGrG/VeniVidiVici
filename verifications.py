@@ -1,3 +1,6 @@
+"""Ces fonctions permettent de vérifier que les entrées de l'utilisateur sont convenables"""
+
+
 def verifier_int(chaine):
     """Cette fonction sert à vérifier qu'une chaîne de caractère contient un entier"""
     # Entrée : chaîne de caractère
@@ -62,4 +65,3 @@ def verifier_clef():
         afficher("Quelle est votre clef ?")
         valeur_clef = input("--> ")
     return int(valeur_clef)
-

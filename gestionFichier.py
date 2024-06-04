@@ -33,7 +33,7 @@ def ecriture(contenu):
     # On crée un fichier texte et on écrit dedans
     with open("message.txt", "w", encoding='utf8') as fio:
         fio.write(contenu)
-        return("message.txt")
+        return "message.txt"
 
 
 def modifier(nom_fichier, contenu):
