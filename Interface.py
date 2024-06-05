@@ -82,7 +82,7 @@ def interface():
 
         afficher("Démarrage du décryptage par force brute")
         afficher("")
-        resultat = brute_force(texte)
+        resultat = brute_force(texte,0)
 
         afficher(f"Pour la clef : {resultat[1]}")
         afficher("La méthode par force brute a décrypté")
