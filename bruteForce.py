@@ -63,7 +63,7 @@ def brute_force(text, clef_to_delete):
         if reponse2 == "oui":
             return liste_clef_probable[compteur_iteratif-1][1]
         else:
-            return "Le message n'est pas en Français ou bien pas codé en César"
+            return "None"
 
 
 

@@ -83,18 +83,21 @@ def interface():
         afficher("Démarrage du décryptage par force brute")
         afficher("")
         resultat = brute_force(texte,0)
-
-        afficher(f"Pour la clef : {resultat[1]}")
-        afficher("La méthode par force brute a décrypté")
-        afficher(f"Le message résultant est le suivant :")
-        print('')
-        print(resultat[0])
-
-        afficher("Voulez-vous enregistrer la réponse")
-        afficher("sous la forme d'un fichier ?")
-        choix_enregistrer = verifier_binaire('oui', 'non')
-        if choix_enregistrer == 'oui':
-            ecriture(resultat[0])
-            afficher("Le résultat se trouve dans message.txt")
+        if resultat == "None":
+            afficher("Le message n'est pas en Français")
+            afficher("ou bien n'est pas codé en César")
         else:
-            afficher("À bientôt")
+            afficher(f"Pour la clef : {resultat[1]}")
+            afficher("La méthode par force brute a décrypté")
+            afficher(f"Le message résultant est le suivant :")
+            print('')
+            print(resultat[0])
+
+            afficher("Voulez-vous enregistrer la réponse")
+            afficher("sous la forme d'un fichier ?")
+            choix_enregistrer = verifier_binaire('oui', 'non')
+            if choix_enregistrer == 'oui':
+                ecriture(resultat[0])
+                afficher("Le résultat se trouve dans message.txt")
+            else:
+                afficher("À bientôt")
