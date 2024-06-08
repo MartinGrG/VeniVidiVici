@@ -19,4 +19,6 @@ Le projet est composé de 4 fichiers:
 
 ## Architecture du code :
 Le script global a été structuré selon l'architecture présentée sur le schéma ci-dessous :
-![Architecture code](architecture_code.png) 
+![Architecture code](architecture_code.png)
+
+
